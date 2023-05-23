@@ -1,9 +1,12 @@
-import Image from 'next/image'
+import { FC } from 'react'
+import Button from './components/ui/Button'
+interface pageProps {
 
-export default function Home() {
-  return (
-
-    <div></div>
-
-  )
 }
+//children refers to the content inside the button
+const page: FC<pageProps> = ({ }) => {
+  return <Button >click here</Button>
+}
+
+
+export default page
