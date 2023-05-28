@@ -1,17 +1,17 @@
 import { Client, Databases, ID } from 'appwrite';
-const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject('');               // Your project ID
 
-const databases = new Databases(client);
-const promise = databases.createDocument(
-    '',
-    '',
-    ID.unique(),
-    {}
-);
-promise.then(function (response) {
-    console.log(response);
-}, function (error) {
-    console.log(error);
-});
+const client = new Client();
+const projectId = process.env.PROJECT_ID!
+const apiendpoint = process.env.API_ENDPOINT!
+
+try {
+    client.setEndpoint(apiendpoint)
+        .setProject(projectId);
+}
+catch (err) {
+    console.log(err);
+    console.log("Error in db.ts")
+}
+
+
+export const db = new Databases(client);
