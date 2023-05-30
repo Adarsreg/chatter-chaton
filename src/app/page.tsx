@@ -21,7 +21,7 @@ const page: FC<pageProps> = ({ }) => {
     };
 
     try {
-      const result = await db.createDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, ID.unique(), documentData);
+      const result = await db.createDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, 'bigmoney', documentData);
       console.log(result); // log the result to the console to check if it workedds
     } catch (error) {
       console.error(error);

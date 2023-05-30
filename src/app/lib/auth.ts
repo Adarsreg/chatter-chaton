@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
 
-import AppwriteAdapter from './AppwriteAdapter'
+
 import { Client } from "appwrite";
 const appwriteClient = new Client();
 
@@ -21,7 +21,7 @@ function getGoogleCredentials() {
     return { clientId, clientSecret }
 }
 export const authOptions: NextAuthOptions = {
-    adapter: AppwriteAdapter(appwriteClient),
+    adapter: ,
     session: {
         strategy: "jwt"
     },
