@@ -40,4 +40,4 @@ const Button: FC<ButtonProps> = ({ className, children, variant, isloading, size
     </button>
 }
 
-export default Button
+export default Button;

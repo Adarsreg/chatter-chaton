@@ -1,25 +1,28 @@
 "use client";
 import { FC } from 'react'
-import Button from './components/ui/Button'
 import { db } from './lib/db';
+import Button from './components/ui/Button'
+
 interface pageProps {
 
 }
-//children refers to the content inside the button
+
+
 const page: FC<pageProps> = ({ }) => {
+
+
   const handleClick = async () => {
-    const collectionId = `${process.env.collection_id}`;
-    const databaseid = `${process.env.database_id}`;
-    const documentid = `${process.env.document_id}`;
+
+
     // set the collection ID of your database
     const documentData = {
-      title: 'process working again', // set the title of your document
-      message: 'hello wroking 33', // set the message of your document
+      title: 'From env not public lmao', // set the title of your document
+      message: 'new test', // set the message of your document
     };
 
     try {
-      const result = await db.createDocument(databaseid, collectionId, documentid, documentData);
-      console.log(result); // log the result to the console to check if it worked
+      const result = await db.createDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, ID.unique(), documentData);
+      console.log(result); // log the result to the console to check if it workedds
     } catch (error) {
       console.error(error);
 
@@ -27,7 +30,8 @@ const page: FC<pageProps> = ({ }) => {
     }
   };
 
-  return <Button onClick={handleClick}>click here</Button>; // add onClick to Button component to call handleClick function
+  return <Button onClick={handleClick}>click here</Button>
+    ; // add onClick to Button component to call handleClick function
 };
 
 export default page;
