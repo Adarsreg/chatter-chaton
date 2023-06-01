@@ -85,11 +85,5 @@ const adapter: Adapter<string> = {
 };
 
 export default adapter;
-function setProject(arg0: string) {
-    throw new Error('Function not implemented.');
-}
 
-function createUser(sessionToken: any) {
-    throw new Error('Function not implemented.');
-}
 
