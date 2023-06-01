@@ -1,10 +1,10 @@
 import { NextAuthOptions } from "next-auth";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
+import appwrite from '../adapters/appwrite'
 
 
-import { Client } from "appwrite";
-const appwriteClient = new Client();
+
 
 function getGoogleCredentials() {
     const clientId = process.env.GOOGLE_CLIENT_ID
@@ -21,7 +21,7 @@ function getGoogleCredentials() {
     return { clientId, clientSecret }
 }
 export const authOptions: NextAuthOptions = {
-    adapter: ,
+    adapter: appwrite,
     session: {
         strategy: "jwt"
     },
@@ -34,5 +34,33 @@ export const authOptions: NextAuthOptions = {
             clientSecret: getGoogleCredentials().clientSecret,
         }),
     ],
+    callbacks: {
+        async jwt({ token, user }) {
+            const dbUser = await db.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, `${token.id}`);
+
+            if (!dbUser) {
+                token.id = user!.id
+                return token
+            }
+            return {
+                id: dbUser.id,
+                name: dbUser.name,
+                email: dbUser.email,
+                picture: dbUser.image,
+            }
+        },
+        async session({ session, token }) {
+            if (token) {
+                session.user.id = token.id
+                session.user.name = token.name
+                session.user.email = token.email
+                session.user.image = token.picture
+            }
+            return session
+        },
+        redirect() {
+            return '/dashboard'
+        }
+    }
 
 }

@@ -1,6 +1,5 @@
 //any requests made to this file will be handled by next-auth
-import { NextAuthOptions } from "next-auth";
+import { authOptions } from "@component/app/lib/auth";
+import NextAuth from "next-auth/next";
 
-/* export const authOptions: NextAuthOptions = {
-    adapter: 
-} */
+export default NextAuth(authOptions)
