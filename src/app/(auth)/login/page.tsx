@@ -12,7 +12,7 @@ const page: FC = () => {
 
         setIsLoading(true)
         try {
-            throw new Error('Its an error')
+            await signIn('google')
 
         } catch (error) {
             // display error message to user

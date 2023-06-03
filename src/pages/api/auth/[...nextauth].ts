@@ -1,4 +1,5 @@
-//any requests made to this file will be handled by next-auth
+//any requests made to this file will be handled by next-autj
+
 import { authOptions } from "@component/app/lib/validations/auth";
 import NextAuth from "next-auth/next";
 
