@@ -22,7 +22,7 @@ function getGoogleCredentials() {
     return { clientId, clientSecret }
 }
 export const authOptions: NextAuthOptions = {
-    adapter: adapter,
+
     session: {
         strategy: "jwt"
     },
@@ -36,9 +36,10 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async jwt({ token, user }) {
-            const dbUser = await db.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, `${token.id}`);
+        /* async jwt({ token, user }) {
 
+            const dbUser = await db.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, `${token.id}`)
+            
             if (!dbUser) {
                 token.id = user!.id
                 return token
@@ -58,9 +59,13 @@ export const authOptions: NextAuthOptions = {
                 session.user.image = token.picture
             }
             return session
-        },
+        }, */
+        redirect() {
+            return '/dashboard'
+        }
 
 
-    }
+    },
+
 
 }

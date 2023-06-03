@@ -4,6 +4,6 @@ type Props = {}
 
 export default function page({ }: Props) {
     return (
-        <div>page</div>
+        <div>HEY THERE THIS IS A DASHBOARD</div>
     )
 }
