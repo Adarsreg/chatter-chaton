@@ -1,5 +1,5 @@
 
-import { cn } from '@component/app/lib/utils'
+import { cn } from '@component/app/lib/validations/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 import { Loader2 } from 'lucide-react'
 import { ButtonHTMLAttributes, FC } from 'react'

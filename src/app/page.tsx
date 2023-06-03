@@ -1,17 +1,17 @@
 "use client";
 import { FC } from 'react'
-import { db } from './lib/db';
-import Button from './components/ui/Button'
+import { db } from './lib/validations/db';
+import Button from '../components/ui/Button'
 
 interface pageProps {
 
 }
 
 
-const page: FC<pageProps> = ({ }) => {
+const Home: FC<pageProps> = ({ }) => {
 
 
-  const handleClick = async () => {
+  /* const handleClick = async () => {
 
 
     // set the collection ID of your database
@@ -28,10 +28,10 @@ const page: FC<pageProps> = ({ }) => {
 
       // log any errors to the console
     }
-  };
+  }; */
 
-  return <Button onClick={handleClick}>click here</Button>
-    ; // add onClick to Button component to call handleClick function
+  return <Button >click here</Button>
+  // add onClick to Button component to call handleClick function
 };
 
-export default page;
+export default Home;
