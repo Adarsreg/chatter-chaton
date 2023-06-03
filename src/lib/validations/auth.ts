@@ -1,8 +1,8 @@
 import { NextAuthOptions } from "next-auth";
 import { db } from "./db";
 import GoogleProvider from "next-auth/providers/google";
-import appwrite from '../../adapters/appwrite'
-import adapter from "../../adapters/appwrite";
+
+import adapter from "@component/adapters/appwrite";
 
 
 

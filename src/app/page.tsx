@@ -1,6 +1,6 @@
 "use client";
 import { FC } from 'react'
-import { db } from './lib/validations/db';
+import { db } from '@component/lib/validations/db';
 import Button from '../components/ui/Button'
 
 interface pageProps {
