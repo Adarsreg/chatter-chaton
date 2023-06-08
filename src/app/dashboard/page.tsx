@@ -1,9 +1,14 @@
 import React from 'react'
+import Button from '@component/components/ui/Button'
+import { FC } from 'react'
+import { authOptions } from '@component/lib/validations/auth'
+import { getServerSession } from 'next-auth'
 
-type Props = {}
 
-export default function page({ }: Props) {
-    return (
-        <div>HEY THERE THIS IS A DASHBOARD</div>
-    )
+
+const page = async ({ }) => {
+    const session = await getServerSession(authOptions)
+    return <pre>{JSON.stringify(session)}</pre>
 }
+
+export default page

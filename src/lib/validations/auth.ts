@@ -36,22 +36,25 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        /* async jwt({ token, user }) {
-
-            const dbUser = await db.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, `${token.id}`)
-            
-            if (!dbUser) {
-                token.id = user!.id
-                return token
-            }
-            return {
-                id: dbUser.id,
-                name: dbUser.name,
-                email: dbUser.email,
-                picture: dbUser.image,
-            }
-        },
+        /*  async jwt({ token, user }) {
+             console.log(token)
+             console.log(user)
+             const dbUser = await db.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, `647e00fa16eb40c6d648`)
+ 
+             if (dbUser === null || dbUser === undefined) {
+                 token.id = user.id
+                 return token
+             }
+             return {
+                 id: dbUser.id,
+                 name: dbUser.name,
+                 email: dbUser.email,
+                 picture: dbUser.image,
+             }
+         }, */
         async session({ session, token }) {
+            console.log(session)
+            console.log(token)
             if (token) {
                 session.user.id = token.id
                 session.user.name = token.name
@@ -59,7 +62,7 @@ export const authOptions: NextAuthOptions = {
                 session.user.image = token.picture
             }
             return session
-        }, */
+        },
         redirect() {
             return '/dashboard'
         }
