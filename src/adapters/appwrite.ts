@@ -35,7 +35,7 @@ const adapter: Adapter<string> = {
     async createUser(user): Promise<AdapterUser> {
         try {
             const response = await database.createDocument(process.env.DATABASE_ID!,
-                process.env.COLLECTION_ID!, ID.unique(), `${user}`);
+                process.env.COLLECTION_ID!, ID.unique(), { user });
             const createdUser: AdapterUser = {
                 id: response.$id,
                 ...user,
@@ -59,8 +59,8 @@ const adapter: Adapter<string> = {
             console.error('Error deleting session:', error);
         }
     },
-    getUserByEmail: function (email: string): Awaitable<AdapterUser | null> {
-        throw new Error('Function not implemented.');
+    async getUserByEmail(email: string): Promise<AdapterUser | null> {
+        const user = database.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, email);
     },
     getUserByAccount: function (providerAccountId: Pick<AdapterAccount, 'provider' | 'providerAccountId'>): Awaitable<AdapterUser | null> {
         throw new Error('Function not implemented.');
