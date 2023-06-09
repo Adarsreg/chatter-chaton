@@ -10,12 +10,13 @@ const client = new Client()
 const database = new Databases(client);
 
 const adapter: Adapter<string> = {
-    async getUser(sessionToken) {
+    async getUser(id) {
+        console.log(id)
         try {
-            const response = await database.listDocuments(
+            const response = await database.getDocument(
                 process.env.APPWRITE_DATABASE_ID!,
                 process.env.APPWRITE_COLLECTION_ID!,
-                [`sessionToken=${sessionToken}`]
+                `${id}`
             );
 
             const document = response.documents[0];
