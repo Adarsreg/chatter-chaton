@@ -1,4 +1,4 @@
-import { Client, Account, Databases, ID } from 'appwrite';
+import { Client, Account, Databases, ID, Query } from 'appwrite';
 import { Awaitable } from 'next-auth';
 import { Adapter, AdapterAccount, AdapterSession, AdapterUser } from 'next-auth/adapters';
 
@@ -13,10 +13,12 @@ const adapter: Adapter<string> = {
     async getUser(id) {
         console.log(id)
         try {
-            const response = await database.getDocument(
+            const response = await database.listDocuments(
                 process.env.APPWRITE_DATABASE_ID!,
                 process.env.APPWRITE_COLLECTION_ID!,
-                `${id}`
+                [
+                    Query.equal("id", [id])
+                ]
             );
 
             const document = response.documents[0];
@@ -48,18 +50,27 @@ const adapter: Adapter<string> = {
         }
     },
 
-    async deleteUser(sessionToken: string) {
+    async deleteSession(sessionToken: string) {
+
         try {
+            const resp = await database.listDocuments(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, [
+                Query.equal('title', [sessionToken]),
+
+            ])
+            const doc = resp.documents[0]
+
             await database.deleteDocument(
                 process.env.DATABASE_ID!,
                 process.env.COLLECTION_ID!,
-                sessionToken
+                doc.$id
             );
+
         } catch (error) {
             console.error('Error deleting session:', error);
+
         }
     },
-    async getUserByEmail(email: string): Promise<AdapterUser | null> {
+    async getUserByEmail(email: string): Promise<AdapterUser> {
         const user = database.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, email);
     },
     getUserByAccount: function (providerAccountId: Pick<AdapterAccount, 'provider' | 'providerAccountId'>): Awaitable<AdapterUser | null> {
@@ -78,9 +89,6 @@ const adapter: Adapter<string> = {
         throw new Error('Function not implemented.');
     },
     updateSession: function (session: Partial<AdapterSession> & Pick<AdapterSession, 'sessionToken'>): Awaitable<AdapterSession | null | undefined> {
-        throw new Error('Function not implemented.');
-    },
-    deleteSession: function (sessionToken: string): Promise<void> | Awaitable<AdapterSession | null | undefined> {
         throw new Error('Function not implemented.');
     }
 };
