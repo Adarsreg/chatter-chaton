@@ -22,7 +22,7 @@ function getGoogleCredentials() {
     return { clientId, clientSecret }
 }
 export const authOptions: NextAuthOptions = {
-
+    adapter: adapter,
     session: {
         strategy: "jwt"
     },

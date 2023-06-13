@@ -11,9 +11,9 @@ const database = new Databases(client);
 
 const adapter: Adapter<string> = {
     async getUser(id) {
-        console.log(id)
+        console.log(id);
         try {
-            const response = await database.listDocuments(
+            const response = database.listDocuments(
                 process.env.APPWRITE_DATABASE_ID!,
                 process.env.APPWRITE_COLLECTION_ID!,
                 [
@@ -21,11 +21,14 @@ const adapter: Adapter<string> = {
                 ]
             );
 
-            const document = response.documents[0];
+            response.then(function (response) {
+                console.log(response); // Success
+            }, function (error) {
+                console.log(response) // Failure
+                console.log(error); // Failure
+            });
 
-            if (document) {
-                return JSON.parse(document.data);
-            }
+
 
             return null;
         } catch (error) {
@@ -36,10 +39,18 @@ const adapter: Adapter<string> = {
 
     async createUser(user): Promise<AdapterUser> {
         try {
-            const response = await database.createDocument(process.env.DATABASE_ID!,
+            const response = database.createDocument(process.env.DATABASE_ID!,
                 process.env.COLLECTION_ID!, ID.unique(), { user });
+
+
+            response.then(function (response) {
+                console.log(response); // Success
+            }, function (error) {
+                console.log(response) // Failure
+                console.log(error); // Failure
+            });
             const createdUser: AdapterUser = {
-                id: response.$id,
+                id: (await response).$id,
                 ...user,
             };
             return createdUser;
@@ -53,29 +64,46 @@ const adapter: Adapter<string> = {
     async deleteSession(sessionToken: string) {
 
         try {
-            const resp = await database.listDocuments(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, [
-                Query.equal('title', [sessionToken]),
+            const resp = database.listDocuments(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, [
+                Query.equal('sessionToken', [sessionToken]),
+            ]);
+            resp.then(function (response) {
+                console.log(response); // Success
+            }, function (error) {
+                console.log(resp) // Failure
+                console.log(error); // Failure
+            });
+            /* const doc = resp.documents[0]; */
 
-            ])
-            const doc = resp.documents[0]
-
-            await database.deleteDocument(
-                process.env.DATABASE_ID!,
-                process.env.COLLECTION_ID!,
-                doc.$id
-            );
+            /*  await database.deleteDocument(
+                 process.env.DATABASE_ID!,
+                 process.env.COLLECTION_ID!,
+                 doc.$id
+             ); */
 
         } catch (error) {
             console.error('Error deleting session:', error);
 
         }
     },
-    async getUserByEmail(email: string): Promise<AdapterUser> {
-        const user = database.getDocument(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, email);
+    async getUserByAccount({ providerAccountId, provider }) {
+        const resp = await database.listDocuments(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, [Query.equal('provider', [provider]), Query.equal('providerAccountId', [providerAccountId])]);
+        const doc = resp.documents[0];
+        if (!doc) {
+            console.log(doc);
+            return null;
+        }
+        const user = database.listDocuments(process.env.DATABASE_ID!, process.env.COLLECTION_ID!, [Query.equal('id', [doc.userId])]);
+        user.then(function (response) {
+            console.log(response); // Success
+        }, function (error) {
+            console.log(error); // Failure
+        });
+        return null;
+
     },
-    getUserByAccount: function (providerAccountId: Pick<AdapterAccount, 'provider' | 'providerAccountId'>): Awaitable<AdapterUser | null> {
-        throw new Error('Function not implemented.');
-    },
+
+
     updateUser: function (user: Partial<AdapterUser> & Pick<AdapterUser, 'id'>): Awaitable<AdapterUser> {
         throw new Error('Function not implemented.');
     },
@@ -89,6 +117,9 @@ const adapter: Adapter<string> = {
         throw new Error('Function not implemented.');
     },
     updateSession: function (session: Partial<AdapterSession> & Pick<AdapterSession, 'sessionToken'>): Awaitable<AdapterSession | null | undefined> {
+        throw new Error('Function not implemented.');
+    },
+    getUserByEmail: function (email: string): Awaitable<AdapterUser | null> {
         throw new Error('Function not implemented.');
     }
 };
