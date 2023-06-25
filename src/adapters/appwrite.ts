@@ -97,6 +97,8 @@ const adapter: Adapter<string> = {
         user.then(function (response) {
             console.log(response); // Success
         }, function (error) {
+            console.log("hello its an error lmao")
+            console.log(user) // Failure
             console.log(error); // Failure
         });
         return null;
