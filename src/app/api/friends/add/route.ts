@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
         const RESTResponse = await fetch(`${process.env.UPSTASH_REDIS_URL}/get/user:email${emailToAdd}`, {
             headers: {
-                Authorization: `Bearer ${process.env.UPSTASH_REDIS_TOKEN}`
+                Authorization: `Bearer ${process.env.UPSTASH_REDIS_TOKEN}`,
             },
             cache: "no-store",
         }
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
         const data = await RESTResponse.json() as { result: string | null }
         const idToAdd = data.result
         if (!idToAdd) {
-            return new Response('This person does not exist', { status: 404 })
+            return new Response('This person does not exist', { status: 400 })
         }
         const session = await getServerSession(authOptions)
         if (!session) {
