@@ -46,8 +46,6 @@ export const authOptions: NextAuthOptions = {
                 return token
             }
 
-
-
             return {
                 id: dbUser.id,
                 name: dbUser.name,

@@ -17,7 +17,7 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({ }) => {
   } = useForm<FormData>({
     resolver: zodResolver(addFriendValidator),
   })
-  const [success, setSuccess] = useState(false)
+  const [success, setSuccess] = useState<boolean>(false)
   const addFriend = async (email: string) => {
     try {
       const validateEmail = addFriendValidator.parse({ email })
