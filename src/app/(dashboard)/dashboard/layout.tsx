@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { FC, ReactNode } from "react";
 import { Icon, Icons } from "@component/components/Icons";
 import Image from "next/image";
+import SignOutButton from "@component/components/SignOutButton";
 
 interface LayoutProps {
     children: ReactNode
@@ -79,6 +80,8 @@ const Layout = async ({ children }: LayoutProps) => {
                                 </span>
                             </div>
                         </div>
+
+                        <SignOutButton className="h-full aspect-square" />
                     </li>
                 </ul>
             </nav>
