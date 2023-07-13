@@ -1,6 +1,5 @@
 //mandatory route.ts file for routing
 //handling post req
-
 import { fetchRedis } from "@component/helpers/redis"
 import { authOptions } from "@component/lib/auth"
 import { db } from "@component/lib/db"

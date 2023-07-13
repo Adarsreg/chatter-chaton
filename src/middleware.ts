@@ -22,7 +22,7 @@ export default withAuth(
             return NextResponse.redirect(new URL('/login', req.url))
         }
         if (pathname === '/') {
-            return NextResponse.redirect(new URL('/login', req.url))
+            return NextResponse.redirect(new URL('/dashboard', req.url))
         }
     }, {
     //callbacks so that the middleware function is always called
