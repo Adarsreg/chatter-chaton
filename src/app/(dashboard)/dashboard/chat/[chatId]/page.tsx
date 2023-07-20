@@ -1,3 +1,4 @@
+import Messages from '@component/components/Messages'
 import { fetchRedis } from '@component/helpers/redis'
 import { authOptions } from '@component/lib/auth'
 import { db } from '@component/lib/db'
@@ -71,6 +72,7 @@ const page = async ({ params }: pageProps) => {
           </div>
         </div>
       </div>
+      <Messages sessionId={session.user.id} initialMessages={initialMessages} />
     </div>
   )
 }
