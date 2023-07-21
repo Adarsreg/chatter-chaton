@@ -1,3 +1,4 @@
+"use client"
 import { FC, useRef, useState } from 'react'
 import { Message } from '@component/lib/validations/message'
 import { cn } from '@component/lib/utils'
