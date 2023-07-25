@@ -1,8 +1,7 @@
+"use client"
 import { FC, useRef, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import { text } from 'stream/consumers'
 import Button from './ui/Button'
-import { set } from 'zod'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 interface ChatInputProps {
@@ -11,7 +10,7 @@ interface ChatInputProps {
 }
 
 const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
-    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const textareaRef = useRef<HTMLTextAreaElement>(null)
     const [input, setInput] = useState<string>('')
     const sendMessage = async () => {
@@ -25,6 +24,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
         }
         catch (error) {
             toast.error('Something went wrong. Please try again')
+            console.log(error)
         }
         finally {
             setIsLoading(false)
