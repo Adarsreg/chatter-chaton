@@ -11,6 +11,7 @@ export async function POST(req: Request) {
     try {
         console.log("check 1")
         const { text, chatId }: { text: string, chatId: string } = await req.json()
+        console.log("check 2")
         const session = await getServerSession(authOptions)
 
         if (!session) return new Response('Unauthorized', { status: 401 })
@@ -29,8 +30,10 @@ export async function POST(req: Request) {
         if (!isFriend) {
             return new Response('Unauthorized', { status: 401 })
         }
-        const rawsender = (await fetchRedis('get', `user:${session.user.id}`)) as string
 
+        console.log("check 4")
+        const rawsender = (await fetchRedis('get', `user:${session.user.id}`)) as string
+        console.log('senderraw', rawsender)
         const sender = JSON.parse(rawsender) as User
         const timestamp = Date.now()
         // send message to redis

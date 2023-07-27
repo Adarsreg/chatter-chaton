@@ -7,7 +7,7 @@ import { messageArrayValidator } from '@component/lib/validations/message'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { FC } from 'react'
+
 
 interface pageProps {
   params: {
@@ -74,7 +74,7 @@ const page = async ({ params }: pageProps) => {
         </div>
       </div>
       <Messages sessionId={session.user.id} initialMessages={initialMessages} />
-      <ChatInput chatPartner={chatPartner} />
+      <ChatInput chatId={chatId} chatPartner={chatPartner} />
     </div>
   )
 }
