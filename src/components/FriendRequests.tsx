@@ -20,7 +20,9 @@ const FriendRequests: FC<FriendRequestsProps> = ({ incomingFriendRequests, sessi
     useEffect(
         () => {
             pusherClient.subscribe(toPusherKey(`user:${sessionId}:incoming_friend_requests`))
-            const friendRequestHandler = () => {
+            console.log("subscribed to  ", `user:${sessionId}:incoming_friend_requests`)
+            const friendRequestHandler = ({ senderId, senderEmail }: IncomingFriendRequest) => {
+                setFriendRequests((prev) => [...prev, { senderId, senderEmail }])
 
             }
             pusherClient.bind('incoming_friend_requests', friendRequestHandler)
