@@ -1,10 +1,11 @@
 "use client"
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { Message } from '@component/lib/validations/message'
-import { cn } from '@component/lib/utils'
+import { cn, toPusherKey } from '@component/lib/utils'
 import { time } from 'console'
 import { format } from 'date-fns'
 import Image from 'next/image'
+import { pusherClient } from '@component/lib/pusher'
 
 
 interface MessagesProps {
@@ -12,11 +13,32 @@ interface MessagesProps {
     sessionId: string
     sessionImg: string | null | undefined
     chatPartner: User
+    chatId: string
 }
 
-const Messages: FC<MessagesProps> = ({ initialMessages, sessionId, chatPartner, sessionImg }) => {
+const Messages: FC<MessagesProps> = ({ initialMessages, sessionId, chatPartner, sessionImg, chatId }) => {
 
     const [messages, setMessages] = useState<Message[]>(initialMessages)
+
+    useEffect(() => {
+        pusherClient.subscribe(toPusherKey(`chat:${chatId}`)
+        )
+
+
+        const MessageHandler = (message: Message) => {
+            setMessages((prev) => [message, ...prev])
+
+        }
+        //message handler gets called everytime a new message is sent
+        pusherClient.bind('incoming-message', MessageHandler)
+
+        return () => {
+            //unsubscribe from pusher channel and unbind the event listener inorder to prevent memory leaks
+            pusherClient.unsubscribe(toPusherKey(`chat:${chatId}`))
+            pusherClient.unbind('incoming-message', MessageHandler)
+        }
+    }, [])
+
     const scrollDownRef = useRef<HTMLDivElement | null>(null)
     const formatTimeStamp = (timestamp: number) => {
         return format(timestamp, 'HH:mm')

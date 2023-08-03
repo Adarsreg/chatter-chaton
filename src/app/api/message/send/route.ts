@@ -2,6 +2,8 @@
 import { fetchRedis } from "@component/helpers/redis"
 import { authOptions } from "@component/lib/auth"
 import { db } from "@component/lib/db"
+import { pusherServer } from "@component/lib/pusher"
+import { toPusherKey } from "@component/lib/utils"
 import { messageValidator } from "@component/lib/validations/message"
 import { nanoid } from "nanoid"
 import { getServerSession } from "next-auth"
@@ -44,8 +46,10 @@ export async function POST(req: Request) {
             text,
             timestamp,
         }
-
         const message = messageValidator.parse(messageData)
+        //sends message to all the connected clients(chat rooms)
+        pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
+
         await db.zadd(`chat:${chatId}:messages`, {
             score: timestamp,
             member: JSON.stringify(message)
