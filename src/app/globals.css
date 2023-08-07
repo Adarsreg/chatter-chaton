@@ -22,3 +22,9 @@ body {
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+@layer base {
+  .container {
+    @apply max-w-7xl mx-auto sm: px-6 lg:px-8
+  }
+}
