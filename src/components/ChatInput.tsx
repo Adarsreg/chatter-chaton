@@ -14,6 +14,7 @@ const ChatInput: FC<ChatInputProps> = ({ chatPartner, chatId }) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null)
     const [input, setInput] = useState<string>('')
     const sendMessage = async () => {
+        if (!input) return
         setIsLoading(true)
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
