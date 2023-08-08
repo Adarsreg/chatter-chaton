@@ -50,6 +50,13 @@ export async function POST(req: Request) {
         //sends message to all the connected clients(chat rooms)
         pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming-message', message)
 
+        pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new message', {
+            //toast notifcation for new message
+            ...message,
+            senderImg: sender.image,
+            senderName: sender.name
+        })
+
         await db.zadd(`chat:${chatId}:messages`, {
             score: timestamp,
             member: JSON.stringify(message)
