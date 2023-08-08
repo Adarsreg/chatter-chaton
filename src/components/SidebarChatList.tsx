@@ -46,14 +46,17 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                         senderName={message.senderName}
                     />
                 ))
+                setUnseenMessages((prev) => [...prev, message])
             }
+
             pusherClient.bind('new_message', chatHandler)
             pusherClient.bind('new_friend', newFriendHandler)
+
             return () => {
                 pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`))
                 pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`))
             }
-        }, []
+        }, [pathname, sessionId, router]
     )
     useEffect(
         () => {
