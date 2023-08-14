@@ -23,6 +23,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
 
     useEffect(
         () => {
+            //subscribe to pusher channels
             pusherClient.subscribe(toPusherKey(`user:${sessionId}:chats`))
             pusherClient.subscribe(toPusherKey(`user:${sessionId}:friends`))
 
@@ -30,6 +31,7 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                 router.refresh()
             }
             const chatHandler = (message: ExtendedMessage) => {
+                console.log('new message')
                 const shouldNotify = pathname !== `/dashboard/chat/${chatHrefConstructor(sessionId, message.senderId)}`
                 //checking through path if the message has occured in the current chat
                 if (!shouldNotify) return
@@ -55,6 +57,9 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
             return () => {
                 pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:chats`))
                 pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:friends`))
+
+                pusherClient.unbind('new_message', chatHandler)
+                pusherClient.unbind('new_friend', newFriendHandler)
             }
         }, [pathname, sessionId, router]
     )
