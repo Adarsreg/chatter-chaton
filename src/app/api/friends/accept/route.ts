@@ -3,6 +3,8 @@
 import { fetchRedis } from "@component/helpers/redis"
 import { authOptions } from "@component/lib/auth"
 import { db } from "@component/lib/db"
+import { pusherServer } from "@component/lib/pusher"
+import { toPusherKey } from "@component/lib/utils"
 import { getServerSession } from "next-auth"
 import { z } from "zod"
 export async function POST(req: Request) {
@@ -28,7 +30,8 @@ export async function POST(req: Request) {
 
         if (!hasFriendRequest) {
             return new Response("No friend request", { status: 400 })
-        }
+        }                                                           //'new_friend' is the event name that will be triggered on the client side
+        pusherServer.trigger(toPusherKey(`user:${idtoAdd}:friends`), 'new_friend', '')
         await db.sadd(`user:${session.user.id}:friends`, idtoAdd)
         await db.sadd(`user:${idtoAdd}:friends`, session.user.id)
         /*  await db.srem(`user:${idtoAdd}:outbound_friend_requests`, session.user.id) */
