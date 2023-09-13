@@ -23,7 +23,7 @@ const Page: FC = () => {
         }
 
     }
-    async function loginWithdiscord() {
+    /* async function loginWithdiscord() {
 
         setIsLoading(true)
         try {
@@ -37,7 +37,7 @@ const Page: FC = () => {
             setIsLoading(false)
         }
 
-    }
+    } */
     return <>
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 
@@ -83,10 +83,10 @@ const Page: FC = () => {
                     )}
                     Google
                 </Button>
-                <Button isloading={isLoading} type='button'
+                {/* <Button isloading={isLoading} type='button'
                     className='max-w-sm mx-auto w-full' onClick={loginWithdiscord}>
                     Discord
-                </Button>
+                </Button> */}
             </div>
 
         </div>
