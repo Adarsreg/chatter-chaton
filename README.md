@@ -58,6 +58,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 * https://github.com/joschan21/nextjs-realtime-chat
 * https://next-auth.js.org/configuration/options
 
+![Screenshot]([http://url/to/img.png](https://ibb.co/WyHvxzr)https://ibb.co/WyHvxzr)
+
 
 
 
