@@ -58,7 +58,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 * https://github.com/joschan21/nextjs-realtime-chat
 * https://next-auth.js.org/configuration/options
 
-![Screenshot]([http://url/to/img.png](https://ibb.co/WyHvxzr)https://ibb.co/WyHvxzr)
+
+
+![Screenshot 2023-11-15 181643](https://github.com/Adarsreg/chatter-chaton/assets/97781350/6cea4eda-2d47-4fc3-83b8-71e487409a51)
+
+
+
 
 
 
