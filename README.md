@@ -24,27 +24,27 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## NETLIFY LINK:
 https://chatonchatter.netlify.app/login
 
-##FEATURES:
-Realtime Communication: Pusher is a cloud-based real-time messaging service that utilizes a publish-subscribe (pub/sub) architecture to facilitate efficient communication between web and mobile applications
+## FEATURES:
+* Realtime Communication: Pusher is a cloud-based real-time messaging service that utilizes a publish-subscribe (pub/sub) architecture to facilitate efficient communication between web and mobile applications
 Seamlessly connect with friends: Send and receive friend requests directly within the app, eliminating the need for outdated email invitations.
 
-Efficient data management: Leverage the power of Redis to ensure lightning-fast database queries, keeping your messaging experience smooth and responsive.
+* Efficient data management: Leverage the power of Redis to ensure lightning-fast database queries, keeping your messaging experience smooth and responsive.
 
-Intuitive user interface: Crafted with TailwindCSS, the app's interface adapts seamlessly to various screen sizes, providing an optimal user experience across all devices.
+* Intuitive user interface: Crafted with TailwindCSS, the app's interface adapts seamlessly to various screen sizes, providing an optimal user experience across all devices.
 
-Secure communications: Protect sensitive routes with robust authentication measures, safeguarding your personal information and ensuring data privacy.
+* Secure communications: Protect sensitive routes with robust authentication measures, safeguarding your personal information and ensuring data privacy.
 
-Streamlined development: Built using TypeScript, the app's code is strongly typed, enhancing maintainability and reducing runtime errors.
+* Streamlined development: Built using TypeScript, the app's code is strongly typed, enhancing maintainability and reducing runtime errors.
 
-TailwindCSS for styling: TailwindCSS provides a comprehensive set of utility classes, enabling rapid and consistent styling across the app's components.
+* TailwindCSS for styling: TailwindCSS provides a comprehensive set of utility classes, enabling rapid and consistent styling across the app's components.
 
-Lucide for icons: Enhance the app's visual appeal with a rich library of SVG icons from Lucide, adding polish and professionalism to the user interface.
+* Lucide for icons: Enhance the app's visual appeal with a rich library of SVG icons from Lucide, adding polish and professionalism to the user interface.
 
-Tailwind merge for class merging: Simplify class merging with tailwind-merge, reducing code complexity and improving code readability.
+* Tailwind merge for class merging: Simplify class merging with tailwind-merge, reducing code complexity and improving code readability.
 
-Conditional classes with clsx: Employ clsx for conditional class application, dynamically adding and removing classes based on specific conditions, enhancing styling flexibility.
+* Conditional classes with clsx: Employ clsx for conditional class application, dynamically adding and removing classes based on specific conditions, enhancing styling flexibility.
 
-Variadic class variants with class-variance-authority: Utilize class-variance-authority to manage multiple variants of a class, enabling granular control over styling variations.
+* Variadic class variants with class-variance-authority: Utilize class-variance-authority to manage multiple variants of a class, enabling granular control over styling variations.
 
 ## Learn More
 To learn more about Next.js, take a look at the following resources:
