@@ -82,7 +82,9 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
                 <a href={`/dashboard/chat/${chatHrefConstructor(
                     sessionId,
                     friend.id
-                )}`} className='text-gray-300 hover:text-indigo-600 hover:bg-gray-700 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>{friend.name}
+                )}`} className='text-gray-300 hover:text-indigo-600 hover:bg-gray-700 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'>
+                    <img src={friend.image} alt={`${friend.name}'s profile`} className='w-8 h-8 rounded-full' />
+                    {friend.name}
                     {unseenMessagesCount > 0 ? (
                         <div className='bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center'>
                             {unseenMessagesCount}
