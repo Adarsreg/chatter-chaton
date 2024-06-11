@@ -3,10 +3,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 Firstly, build the app:
+
 ```bash
 npm run build
 ```
+
 Then run the app:
+
 ```bash
 npm run dev
 # or
@@ -22,31 +25,34 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## NETLIFY LINK:
+
 https://chatonchatter.netlify.app/login
 
 ## FEATURES:
-* Realtime Communication: Pusher is a cloud-based real-time messaging service that utilizes a publish-subscribe (pub/sub) architecture to facilitate efficient communication between web and mobile applications
-Seamlessly connect with friends: Send and receive friend requests directly within the app, eliminating the need for outdated email invitations.
 
-* Efficient data management: Leverage the power of Redis to ensure lightning-fast database queries, keeping your messaging experience smooth and responsive.
+- Realtime Communication: Pusher is a cloud-based real-time messaging service that utilizes a publish-subscribe (pub/sub) architecture to facilitate efficient communication between web and mobile applications
+  Seamlessly connect with friends: Send and receive friend requests directly within the app, eliminating the need for outdated email invitations.
 
-* Intuitive user interface: Crafted with TailwindCSS, the app's interface adapts seamlessly to various screen sizes, providing an optimal user experience across all devices.
+- Efficient data management: Leverage the power of Redis to ensure lightning-fast database queries, keeping your messaging experience smooth and responsive.
 
-* Secure communications: Protect sensitive routes with robust authentication measures, safeguarding your personal information and ensuring data privacy.
+- Intuitive user interface: Crafted with TailwindCSS, the app's interface adapts seamlessly to various screen sizes, providing an optimal user experience across all devices.
 
-* Streamlined development: Built using TypeScript, the app's code is strongly typed, enhancing maintainability and reducing runtime errors.
+- Secure communications: Protect sensitive routes with robust authentication measures, safeguarding your personal information and ensuring data privacy.
 
-* TailwindCSS for styling: TailwindCSS provides a comprehensive set of utility classes, enabling rapid and consistent styling across the app's components.
+- Streamlined development: Built using TypeScript, the app's code is strongly typed, enhancing maintainability and reducing runtime errors.
 
-* Lucide for icons: Enhance the app's visual appeal with a rich library of SVG icons from Lucide, adding polish and professionalism to the user interface.
+- TailwindCSS for styling: TailwindCSS provides a comprehensive set of utility classes, enabling rapid and consistent styling across the app's components.
 
-* Tailwind merge for class merging: Simplify class merging with tailwind-merge, reducing code complexity and improving code readability.
+- Lucide for icons: Enhance the app's visual appeal with a rich library of SVG icons from Lucide, adding polish and professionalism to the user interface.
 
-* Conditional classes with clsx: Employ clsx for conditional class application, dynamically adding and removing classes based on specific conditions, enhancing styling flexibility.
+- Tailwind merge for class merging: Simplify class merging with tailwind-merge, reducing code complexity and improving code readability.
 
-* Variadic class variants with class-variance-authority: Utilize class-variance-authority to manage multiple variants of a class, enabling granular control over styling variations.
+- Conditional classes with clsx: Employ clsx for conditional class application, dynamically adding and removing classes based on specific conditions, enhancing styling flexibility.
+
+- Variadic class variants with class-variance-authority: Utilize class-variance-authority to manage multiple variants of a class, enabling granular control over styling variations.
 
 ## Learn More
+
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
@@ -55,17 +61,8 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## ACKNOWLEDGEMENTS:
-* https://github.com/joschan21/nextjs-realtime-chat
-* https://next-auth.js.org/configuration/options
 
+- https://github.com/joschan21/nextjs-realtime-chat
+- https://next-auth.js.org/configuration/options
 
-
-![Screenshot 2023-11-15 181643](https://github.com/Adarsreg/chatter-chaton/assets/97781350/6cea4eda-2d47-4fc3-83b8-71e487409a51)
-
-
-
-
-
-
-
-
+![Chatter?ChatOn](public/updatedchat.png)
