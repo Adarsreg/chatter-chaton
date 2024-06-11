@@ -60,7 +60,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 
 
-![Screenshot 2023-11-15 181643](https://github.com/Adarsreg/chatter-chaton/assets/97781350/6cea4eda-2d47-4fc3-83b8-71e487409a51)
+![https://portfolio-alpha-opal-90.vercel.app/assets/chatapp-86cbb0a1.png)
 
 
 
