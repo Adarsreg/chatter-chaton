@@ -46,7 +46,7 @@ const Page: FC = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
                         <path fill="#0077C9" stroke="#000000" d="M194.4,382.5L193,382.5L78.7,366.1L38.7,246.8L55.2,231.5L70,245.5L60.2,291.5L116.2,324.9L128.1,316.2L123.8,223.5L123.8,223.3L194.4,173.6L192.8,173L245.3,208.6L379.6,196.2L388.1,246.8L328.7,262.2L338.6,307.9L304.7,325.4L294.8,279.8L284.6,327.3L253.9,338.4L241.4,327.6L256.1,291.1L200,257.7L188.5,266.3L193,364.4L194.4,365.4L301.7,420L301.8,420L301.7,420ZM173.8,291.5L141.5,285.1L148.8,263.5L173.8,265.7L173.8,291.5ZM155.6,234.5L136.1,239.9L129.7,225.1L128.4,183.9L155.6,193L155.6,234.5ZM192.3,189.5L164.3,183L155.6,166.6L170.6,156L183.5,167.8L181.4,176.8L193,184.3L192.3,189.5ZM362.5,277.5L289.1,296.3L273.6,284.3L271.9,235.5L259.9,223.5L243.5,233.6L253.5,267.5L247.2,299.6L257.3,313.3L279.5,299.7L288.9,261.5L304.6,268.3L314.1,313.1L338.5,320.4L350.5,302.2L373.3,311.8L388,273.5L362.3,275.4L362.5,277.5Z" />
                     </svg>
-                    <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>ChatOn <span className='text-blue-500'>Chatter?</span></h2>
+                    <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>ChatOn <span className='text-blue-600'>Chatter?</span></h2>
                     <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-gray-900'>Sign in to your account</h2>
                 </div>
 

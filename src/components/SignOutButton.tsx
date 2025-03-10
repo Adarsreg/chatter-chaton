@@ -1,38 +1,37 @@
 "use client"
 import { ButtonHTMLAttributes, FC, useState } from 'react'
-import Button from './ui/Button'
 import { toast } from 'react-hot-toast'
 import { signOut } from 'next-auth/react'
-import { set } from 'zod'
-import { Loader2, LogOut } from 'lucide-react'
+import { LogOut, Loader2 } from 'lucide-react'
 
-interface SignOutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-
-}
+interface SignOutButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const SignOutButton: FC<SignOutButtonProps> = ({ ...props }) => {
-    const [isSignOut, setIsSignOut] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    return <Button{...props} variant='ghost' onClick={async () => {
-        setIsSignOut(true)
+  return (
+    <button
+      {...props}
+      className="flex items-center justify-center w-10 h-10 text-gray-300 hover:text-indigo-600 hover:bg-gray-700 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      onClick={async () => {
+        setIsLoading(true) // Start loading
         try {
-            await signOut()
+          await signOut()
+        } catch (error) {
+          toast.error('There was a problem signing out')
+        } finally {
+          setIsLoading(false) // Stop loading
         }
-        catch (error) {
-            toast.error('There was a problem signing out')
-        }
-        finally {
-            setIsSignOut(false)
-        }
-
-    }}>
-        {isSignOut ? (
-            <Loader2 className='animate-spin h-4 w-4' />
-        ) : (
-            <LogOut className='w-4 h-4  text-white hover:bg-gray-700 ' />
-
-        )}
-    </Button>
+      }}
+      disabled={isLoading} // Disable button while loading
+    >
+      {isLoading ? (
+        <Loader2 className="w-5 h-5 animate-spin" /> // Spinner while loading
+      ) : (
+        <LogOut className="w-5 h-5" /> // LogOut icon when not loading
+      )}
+    </button>
+  )
 }
 
 export default SignOutButton
