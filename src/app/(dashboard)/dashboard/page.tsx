@@ -9,7 +9,7 @@ import { getServerSession } from 'next-auth'
 
 const page = async ({ }) => {
 
-    return <h1>Chat text</h1>
+    return (<h1></h1>)
 }
 
 export default page
